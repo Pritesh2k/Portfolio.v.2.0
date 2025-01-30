@@ -1,21 +1,33 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
 .home4-container {
     display: flex;
-    flex-direction: column; /* Allow content to stack */
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    min-height: 100vh; /* Use min-height instead of height */
+    flex-direction: column;
+
+    width: 100dvw;
+    min-height: 100dvh;
+
     position: relative;
-    overflow-y: auto;
 }
 
 .home4-container .landing-image {
     width: 100%;
-    height: 100vh; /* Keep full height for the image */
-    position: absolute;
+    height: 100dvh;
+    position: fixed; /* Change to fixed to keep the image in place */
     top: 0;
     left: 0;
     background-color: rgb(0, 0, 0);
+    z-index: -1; /* Ensure the image is behind the content */
+    overflow: hidden;
 }
 
 .home4-container .landing-image .landing-image-main {
@@ -27,10 +39,63 @@
     animation: Landing-image-intro 3s ease-in-out forwards;
 }
 
-.content {
-    position: relative;
-    z-index: 2; /* Ensure it's above the background */
+.section-1, .section-2, .section-3, .section-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 100dvh; /* Ensure each section takes up the full viewport height */
     padding: 50px;
-    text-align: center;
-    color: white;
+
+    box-sizing: border-box;
+}
+
+.section {
+    transition: transform 0.1s ease-out;
+}
+
+.section-1 {
+    background-color: transparent; /* Make the first section transparent */
+    /* display: flex; */
+    opacity: 1;
+}
+
+.section-2, .section-3, .section-4 {
+    background-color: #f5f5f50a;
+    /* border-top: 1px solid #ddd; */
+    /* margin-bottom: 13dvh; */
+}
+
+.section-2 h2, .section-3 h2, .section-4 h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.section-2 p, .section-3 p, .section-4 p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Optional: Add spacing between sections */
+.section-2, .section-3, .section-4 {
+    margin-top: 50px;
+}
+
+/* Optional: Add a subtle shadow to make the sections stand out */
+.section-2, .section-3, .section-4 {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific style for large screen viewports */
+@media screen and (min-width: 768px) {
+    .section-2, .section-3, .section-4 {
+        padding: 80px;
+    }
+
+    .section-2 h2, .section-3 h2, .section-4 h2 {
+        font-size: 2.5rem;
+    }
 }
